@@ -1,10 +1,9 @@
 class Solution {
 public:
     bool isPowerOfTwo(int n) {
-        for(int i = 1; i <= 1073741824; i*=2)
+        for(int i = 1; i <= 31; i++)
         {
-            if((n^i) == 0) return true;
-            if(i == 1073741824) break;
+            if((n^(1<<(i-1))) == 0) return true;
         }
         return false;
     }
