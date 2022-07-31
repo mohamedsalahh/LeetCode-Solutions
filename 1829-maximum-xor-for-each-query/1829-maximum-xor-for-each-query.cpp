@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> getMaximumXor(vector<int>& nums, int maximumBit) {
-        vector<int> bitCount(32, 0), ans(nums.size(), 0);;
+        vector<int> bitCount(maximumBit, 0), ans(nums.size(), 0);;
         for(int num: nums)
         {
             for(int i = 0; i < maximumBit; ++i)
@@ -18,7 +18,7 @@ public:
                     k |= 1 << i;
             }
             
-            for(int i = 0; i < 32; ++i)
+            for(int i = 0; i < maximumBit; ++i)
                 bitCount[i] -= (nums[idx] >> i) & 1;
             ans[i] = k;
         }
