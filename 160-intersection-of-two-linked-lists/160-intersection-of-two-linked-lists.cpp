@@ -9,16 +9,28 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        map<ListNode*, bool> vis;
+        int cntA = 0, cntB = 0;
+        ListNode *tempA = headA, *tempB = headB;
+        while(tempA)
+        {
+            cntA++;
+            tempA = tempA->next;
+        }
+        while(tempB)
+        {
+            cntB++;
+            tempB = tempB->next;
+        }
+        for(int i = 0; i < cntA - min(cntA, cntB); ++i)
+            headA = headA->next;
+        
+        for(int i = 0; i < cntB - min(cntA, cntB); ++i)
+            headB = headB->next;
         while(headA)
         {
-            vis[headA] = 1;
+            if(headA == headB)
+                return headA;
             headA = headA->next;
-        }
-        while(headB)
-        {
-            if(vis[headB])
-                return headB;
             headB = headB->next;
         }
         return NULL;
