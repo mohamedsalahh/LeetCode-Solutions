@@ -10,37 +10,15 @@
 
 class Solution {
 public:
-    vector<TreeNode*> getAncestors(TreeNode* root, TreeNode* node)
-    {
-        vector<TreeNode*> ancestors;
-        while(root != node)
-        {
-            ancestors.push_back(root);
-            if(node->val < root->val)
-                root = root->left;
-            else 
-                root = root->right;
-        }
-        ancestors.push_back(node);
-        return ancestors;
-    }
-    
-    bool isChild(TreeNode* root, TreeNode* node)
-    {
-        if(!root)
-            return false;
-        if(root == node)
-            return true;
-        return isChild(root->right, node) || isChild(root->left, node); 
-    }
-    
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        vector<TreeNode*> v = getAncestors(root, p);
-
-        for(int i = v.size()-1; i >= 0; --i)
+        while(root)
         {
-            if(isChild(v[i], q))
-                return v[i];
+            if(p->val < root->val && q->val < root->val)
+                root = root->left;
+            else if(p->val > root->val && q->val > root->val)
+                root = root->right;
+            else
+                return root;
         }
         return NULL;
     }
