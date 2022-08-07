@@ -1,8 +1,6 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        int mx = *max_element(s.begin(), s.end());
-        cout << mx ;
         vector<int> prevIdx(130, -1);
         int ans = 0;
         int cnt = 0;
