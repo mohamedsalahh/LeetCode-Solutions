@@ -4,7 +4,7 @@ public:
     string intToRoman(int num) {
         string ans = "";
         string n = to_string(num);
-        vector<pair<int, char>> v = {{1000, 'M'}, {500, 'D'}, {100, 'C'}, {50, 'L'},{10, 'X'}, {5, 'V'}, {1, 'I'}};
+        vector<pair<int, char>> roman = {{1000, 'M'}, {500, 'D'}, {100, 'C'}, {50, 'L'},{10, 'X'}, {5, 'V'}, {1, 'I'}};
         
         int m = 1 * pow(10, (int)n.size()-1);
         for(int i = 0 ; i < n.size(); ++i, m/=10)
@@ -18,15 +18,15 @@ public:
             else if(x == 900) ans += "CM";
             else
             {
-                int vv = 0;
-                while(vv < 7)
+                int idx = 0;
+                while(idx < 7)
                 {
-                    if(v[vv].first <= x)
+                    if(x >= roman[idx].first)
                     {
-                        ans += string(x/v[vv].first, v[vv].second);
-                        x %= v[vv].first;
+                        ans += string(x/roman[idx].first, roman[idx].second);
+                        x %= roman[idx].first;
                     }
-                    vv++;
+                    idx++;
                 }
             }
         }
