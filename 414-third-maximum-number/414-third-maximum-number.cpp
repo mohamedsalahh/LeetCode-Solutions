@@ -1,27 +1,15 @@
 class Solution {
 public:
     int thirdMax(vector<int>& nums) {
-        long long f = LLONG_MIN, s = LLONG_MIN, t = LLONG_MIN;
+        vector<long long> v(3, LLONG_MIN);
         for(int num: nums)
         {
-            if(num == f || num == s || num == t)
+            if(num == v[0] || num == v[1] || num == v[2])
                 continue;
-            if(num > f)
-            {
-                t = s;
-                s = f;
-                f = num;
-            }
-            else if(num > s)
-            {
-                t = s;
-                s = num;
-            }
-            else if(num > t)
-            {
-                t = num;
-            }
+            if(num > v[0])
+                v[0] = num;
+            sort(v.begin(), v.end());
         }
-        return (t != LLONG_MIN? t : f);
+        return (v[0] != LLONG_MIN? v[0] : v[2]);
     }
 };
