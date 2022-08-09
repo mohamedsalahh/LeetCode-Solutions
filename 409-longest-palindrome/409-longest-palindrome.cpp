@@ -9,8 +9,7 @@ public:
         for(int i = 0; i <= 'z'; ++i)
         {
             ans += (freq[i]/2) * 2;
-            freq[i] -= (freq[i]/2) * 2;
-            if(freq[i] == 1)
+            if(freq[i] & 1)
                 odd = 1;
         }
         return (odd? ans+1 : ans);
