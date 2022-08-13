@@ -12,7 +12,7 @@ public:
                 rows[j].push_back(s[i++]);
         }
         string ans = "";
-        for(string row: rows)
+        for(string& row: rows)
             ans += row;
         return ans;
     }
