@@ -12,8 +12,8 @@ public:
                 rows[j].push_back(s[i++]);
         }
         string ans = "";
-        for(int i = 0; i < numRows; ++i)
-            ans += rows[i];
+        for(string row: rows)
+            ans += row;
         return ans;
     }
 };
