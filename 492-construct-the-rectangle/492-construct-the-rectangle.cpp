@@ -7,7 +7,7 @@ public:
         {
             if(area % i == 0)
             {
-                if(abs(i - (area/i)) < INT_MAX)
+                if(abs(i - (area/i)) < diff)
                 {
                     diff = abs(i - (area/i));
                     ans = {i, area/i};
