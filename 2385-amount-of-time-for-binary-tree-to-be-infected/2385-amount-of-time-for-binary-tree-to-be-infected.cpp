@@ -12,7 +12,7 @@
 class Solution {
 public:
     TreeNode* startNode = NULL;
-    map<TreeNode*, TreeNode*> par;
+    unordered_map<TreeNode*, TreeNode*> par;
     void dfs(TreeNode* root, TreeNode* parent, int start)
     {
         if(root == NULL)
@@ -25,7 +25,7 @@ public:
     }
     int amountOfTime(TreeNode* root, int start) {
         dfs(root, NULL, start);
-        map<TreeNode*, int> vis;
+        unordered_map<TreeNode*, int> vis;
         int ans = 0;
         queue<TreeNode*> q;
         q.push(startNode);
